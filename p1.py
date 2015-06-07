@@ -1,13 +1,10 @@
 """
 Algorithmic Thinking - Part 1
 Project 1 - Graph basics
-CodeSkulptor ID: user40_j0MagYl63nPIjUn
+CodeSkulptor ID: user40_ILWP9XVessBDVGu
 """
 
 __author__ = 'manuel'
-
-import graphs as graphs
-import dicts as dicts
 
 
 # Graph examples (global constants)
@@ -45,6 +42,29 @@ def make_complete_graph(num_nodes):
     return digraph
 
 
+def in_degree(graph, node):
+    """
+    Computes the in-degree (in case of a digraph) or the degree (in case of
+    an undirected graph) of the given node.
+
+    :param graph: The given graph/digraph, represented as a dict {node: set(incident_to)}
+    :type graph: dict
+    :param node: the given node.
+    :type node: object
+
+    :return: The degree/in-degree of node.
+    :rtype: int
+    """
+    count = 0
+
+    for n in graph:
+        for to_node in graph[n]:
+            if to_node == node:
+                count += 1
+
+    return count
+
+
 def compute_in_degrees(digraph):
     """
     Computes the in-degree of all nodes in directed graph 'digraph'.
@@ -60,8 +80,28 @@ def compute_in_degrees(digraph):
     """
     in_degrees = {}
     for node in digraph:
-        in_degrees[node] = graphs.in_degree(digraph, node)
+        in_degrees[node] = in_degree(digraph, node)
     return in_degrees
+
+
+def make_dict(keys, default_value=0):
+    """
+    Creates a new dictionary with the specified keys and default value.
+
+    :param keys: A list of keys to be included in the returned dictionary.
+    :type keys: list
+    :param default_value: The initial mapping value for each key.
+    :type default_value: object
+
+    :return: A dictionary where every key is mapped to the given default_value.
+    :rtype: dict
+    """
+    result = {}
+
+    for key in keys:
+        result[key] = default_value
+
+    return result
 
 
 def in_degree_distribution(digraph):
@@ -79,7 +119,7 @@ def in_degree_distribution(digraph):
     :rtype: dict
     """
     in_degrees = compute_in_degrees(digraph)
-    in_deg_dist = dicts.make_dict(in_degrees.keys())
+    in_deg_dist = make_dict(in_degrees.keys())
     for in_deg in in_degrees.itervalues():
         in_deg_dist[in_deg] += 1
     return in_deg_dist
