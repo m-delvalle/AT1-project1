@@ -3,6 +3,9 @@ Project 1 - Test
 Provided Graphs for Module 1 testing
 """
 
+import p1
+
+
 GRAPH0 = {0: {1},
           1: {2},
           2: {3},
@@ -136,3 +139,8 @@ GRAPH9 = {0: {1, 2, 3, 4, 5, 6},
           47: {8, 20, 2, 4},
           48: {0, 16, 2, 5, 14},
           49: {2, 21, 18, 6, 15}}
+
+
+# TESTING
+assert p1.in_degree_distribution(GRAPH1) == {0: 4, 4: 1}
+print "SUCCESS! :)"
