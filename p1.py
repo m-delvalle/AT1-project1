@@ -36,7 +36,8 @@ def make_complete_graph(num_nodes):
     """
     digraph = {}
     for node_id in xrange(num_nodes):
+        digraph[node_id] = set([])
         for to_node in xrange(num_nodes):
             if to_node != node_id:
-                digraph[node_id] = to_node
+                digraph[node_id].add(to_node)
     return digraph
