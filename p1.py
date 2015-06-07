@@ -57,8 +57,8 @@ def in_degree(graph, node):
     """
     count = 0
 
-    for n in graph:
-        for to_node in graph[n]:
+    for each_node in graph:
+        for to_node in graph[each_node]:
             if to_node == node:
                 count += 1
 
@@ -84,26 +84,6 @@ def compute_in_degrees(digraph):
     return in_degrees
 
 
-def make_dict(keys, default_value=0):
-    """
-    Creates a new dictionary with the specified keys and default value.
-
-    :param keys: A list of keys to be included in the returned dictionary.
-    :type keys: list
-    :param default_value: The initial mapping value for each key.
-    :type default_value: object
-
-    :return: A dictionary where every key is mapped to the given default_value.
-    :rtype: dict
-    """
-    result = {}
-
-    for key in keys:
-        result[key] = default_value
-
-    return result
-
-
 def in_degree_distribution(digraph):
     """
     Computes in-degrees unnormalized distribution as a dict whose keys
@@ -119,7 +99,11 @@ def in_degree_distribution(digraph):
     :rtype: dict
     """
     in_degrees = compute_in_degrees(digraph)
-    in_deg_dist = make_dict(in_degrees.keys())
+    in_deg_dist = {}
     for in_deg in in_degrees.itervalues():
-        in_deg_dist[in_deg] += 1
+        if in_deg != 0:
+            if in_deg_dist.has_key(in_deg):
+                in_deg_dist[in_deg] += 1
+            else:
+                in_deg_dist[in_deg] = 1
     return in_deg_dist
