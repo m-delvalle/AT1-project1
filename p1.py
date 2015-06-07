@@ -1,7 +1,7 @@
 """
 Algorithmic Thinking - Part 1
 Project 1 - Graph basics
-CodeSkulptor ID: user40_ILWP9XVessBDVGu
+CodeSkulptor ID: user40_PeuO04TOcE11T5u
 """
 
 __author__ = 'manuel'
@@ -101,9 +101,8 @@ def in_degree_distribution(digraph):
     in_degrees = compute_in_degrees(digraph)
     in_deg_dist = {}
     for in_deg in in_degrees.itervalues():
-        if in_deg != 0:
-            if in_deg_dist.has_key(in_deg):
-                in_deg_dist[in_deg] += 1
-            else:
-                in_deg_dist[in_deg] = 1
+        if in_deg_dist.has_key(in_deg):
+            in_deg_dist[in_deg] += 1
+        else:
+            in_deg_dist[in_deg] = 1
     return in_deg_dist
