@@ -3,7 +3,7 @@ Project 1 - Test
 Provided Graphs for Module 1 testing
 """
 
-import p1
+# import p1
 
 
 GRAPH0 = {0: {1},
@@ -142,5 +142,5 @@ GRAPH9 = {0: {1, 2, 3, 4, 5, 6},
 
 
 # TESTING
-assert p1.in_degree_distribution(GRAPH1) == {0: 4, 4: 1}
-print "SUCCESS! :)"
+# assert p1.in_degree_distribution(GRAPH1) == {0: 4, 4: 1}
+# print "SUCCESS! :)"
